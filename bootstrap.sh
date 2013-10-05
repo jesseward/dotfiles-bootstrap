@@ -264,6 +264,7 @@ DISTRO_NAME_L=$(echo $DISTRO_NAME | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z
 #   DESCRIPTION:  (DRY) apt-get install with noinput options
 #-------------------------------------------------------------------------------
 __ubuntu_install_noinput() {
+    echowarn "  calling sudo to install $@"
     sudo apt-get install -y -o DPkg::Options::=--force-confold $@; return $?
 }
 
@@ -272,6 +273,7 @@ __ubuntu_install_noinput() {
 #   DESCRIPTION:  (DRY) yum install with noinput options
 #-------------------------------------------------------------------------------
 __centos_install_noinput() {
+    echowarn "  calling sudo to install $@"
     sudo yum -y install $@; return $?
 }
 
@@ -333,7 +335,7 @@ for files in init/*; do
     echoinfo "  Initializing ${files}."
     source ${files}
     if [ $? -ne 0 ]; then 
-        echoerror "  Failed to run ${files}."
+        echoerror "  Failed to run ${files} from ${PWD}."
     fi
 done
 cd ${HOME}
