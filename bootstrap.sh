@@ -260,11 +260,27 @@ __gather_os_info
 DISTRO_NAME_L=$(echo $DISTRO_NAME | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z0-9_ ]//g' | sed -re 's/([[:space:]])+/_/g')
 
 #---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  __apt_get_install_noinput
+#   DESCRIPTION:  (DRY) apt-get install with noinput options
+#-------------------------------------------------------------------------------
+__ubuntu_install_noinput() {
+    sudo apt-get install -y -o DPkg::Options::=--force-confold $@; return $?
+}
+
+#---  FUNCTION  ----------------------------------------------------------------
+#          NAME:  __yum_install_noinput
+#   DESCRIPTION:  (DRY) yum install with noinput options
+#-------------------------------------------------------------------------------
+__centos_install_noinput() {
+    sudo yum -y install $@; return $?
+}
+
+#---  FUNCTION  ----------------------------------------------------------------
 #          NAME:  install_centos_packages
 #   DESCRIPTION:  deploy required centos packages.
 #-------------------------------------------------------------------------------
-install_centos_packages() {
-    sudo yum -y install tmux git || return 1
+install_centos_base_packages() {
+    __centos_install_noinput git || return 1
 
     return 0
 }
@@ -273,8 +289,8 @@ install_centos_packages() {
 #          NAME:  install_ubuntu_packages
 #   DESCRIPTION:  deploy required ubuntu packages
 #-------------------------------------------------------------------------------
-install_ubuntu_packages() {
-    sudo apt-get install -y -o DPkg::Options::=--force-confold tmux git || return 1
+install_ubuntu_base_packages() {
+    __ubuntu_install_noinput git || return 1
 
     return 0
 }
@@ -284,10 +300,13 @@ echoinfo "  OS Version:   ${OS_VERSION}"
 echoinfo "  Distribution: ${DISTRO_NAME} ${DISTRO_VERSION}"
 
 echoinfo "  Installing deps for ${DISTRO_NAME_L}"
-install_${DISTRO_NAME_L}_packages
+install_${DISTRO_NAME_L}_base_packages
+
+INSTALLER=__${DISTRO_NAME_L}_install_noinput
+echodebug "  INSTALLER=${INSTALLER}"
 
 if [ $? -ne 0 ]; then
-    echoerror "  Failed to run install_${DISTRO_NAME_L}_packages."
+    echoerror "  Failed to run install_${DISTRO_NAME_L}_base_packages."
     exit 1
 fi
 
@@ -312,8 +331,9 @@ cd dotfiles-bootstrap
 # run install scripts
 for files in init/*; do
     echoinfo "  Initializing ${files}."
-    sh ${files}
+    source ${files}
     if [ $? -ne 0 ]; then 
         echoerror "  Failed to run ${files}."
     fi
 done
+cd ${HOME}

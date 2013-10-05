@@ -1,9 +1,23 @@
+# environment specific variables
 BUNDLE_DIR="${HOME}/.vim/bundle"
 AUTOLOAD_DIR="${HOME}/.vim/autoload"
 
+# vim plugins to install
 PACKAGES="https://github.com/bling/vim-airline 
 https://github.com/tsaleh/vim-matchit
 https://github.com/altercation/vim-colors-solarized"
+
+# package list
+centos_packages() {
+    packages="vim"
+}
+ubuntu_packages() {
+    packages="vim"
+}
+
+${DISTRO_NAME_L}_packages
+# run package installer
+${INSTALLER} ${packages}
 
 rm -rf ${BUNDLE_DIR} ${AUTOLOAD_DIR}
 
@@ -12,7 +26,7 @@ mkdir -p ${BUNDLE_DIR} ${AUTOLOAD_DIR}
 # install pathogen
 curl -Sso ${AUTOLOAD_DIR}/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
-# install all PACKAGES
+# install all vim plugins
 for P in ${PACKAGES}
 do
     cd ${BUNDLE_DIR}
