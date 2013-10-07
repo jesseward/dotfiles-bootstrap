@@ -333,7 +333,7 @@ cd dotfiles-bootstrap
 # run install scripts
 for files in init/*; do
     echoinfo "  Initializing ${files}."
-    source ${files}
+    . ${files}
     if [ $? -ne 0 ]; then 
         echoerror "  Failed to run ${files} from ${PWD}."
     fi
