@@ -44,7 +44,6 @@ filetype plugin indent on
 set ts=4
 set tabstop=4
 set expandtab
-
 set softtabstop=4
 set shiftwidth=4
 set number
@@ -52,6 +51,7 @@ set smartindent
 set title
 set whichwrap+=<>[]hl
 set laststatus=2
+set cursorline
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 __EOF__
