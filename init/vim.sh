@@ -5,7 +5,8 @@ AUTOLOAD_DIR="${HOME}/.vim/autoload"
 # vim plugins to install
 PACKAGES="https://github.com/bling/vim-airline 
 https://github.com/tsaleh/vim-matchit
-https://github.com/altercation/vim-colors-solarized"
+https://github.com/altercation/vim-colors-solarized
+https://github.com/airblade/vim-gitgutter.git"
 
 # package list
 centos_packages() {
