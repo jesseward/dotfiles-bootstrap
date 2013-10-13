@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# dotfiles-bootstrap location
+BOOTSTRAP_REPO="https://github.com/jesseward/dotfiles-bootstrap.git"
+
 # git repo on local file system
 GIT_DIR="${HOME}/git/github"
 
@@ -321,10 +324,10 @@ fi
 
 cd ${GIT_DIR}
 rm -rf dotfiles-bootstrap
-git clone https://github.com/jesseward/dotfiles-bootstrap.git
+git clone ${BOOTSTRAP_REPO}
 
 if [ $? -ne 0 ]; then 
-    echoerror "  Failed to clone https://github.com/jesseward/dotfiles-bootstrap"
+    echoerror "  Failed to clone ${BOOTSTRAP_REPO}"
     exit 1
 fi
 
