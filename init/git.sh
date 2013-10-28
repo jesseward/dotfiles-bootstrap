@@ -25,6 +25,10 @@ cat > ~/.gitignore <<__EOF__
 *.py[cod]
 *.egg
 *.egg-info
+# my virtenv directories
+ve
+# build directories
+build
 pip-log.txt
 local_settings.py
 
