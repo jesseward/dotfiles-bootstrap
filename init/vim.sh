@@ -54,5 +54,7 @@ set whichwrap+=<>[]hl
 set laststatus=2
 set cursorline
 set background=dark
+set incsearch
+set hlsearch
 "colorscheme solarized
 __EOF__
