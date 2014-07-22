@@ -25,7 +25,7 @@ rm -rf ${BUNDLE_DIR} ${AUTOLOAD_DIR}
 mkdir -p ${BUNDLE_DIR} ${AUTOLOAD_DIR}
 
 # install pathogen
-curl -Sso ${AUTOLOAD_DIR}/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+wget -O ${AUTOLOAD_DIR}/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # install all vim plugins
 for P in ${PACKAGES}
