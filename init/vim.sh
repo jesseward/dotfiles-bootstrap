@@ -39,7 +39,7 @@ done
 
 # rebuild .vimrc
 cat > ~/.vimrc <<__EOF__
-call pathogen#infect()
+execute pathogen#infect()
 syntax on
 filetype plugin indent on
 set ts=4
@@ -56,5 +56,8 @@ set cursorline
 set background=dark
 set incsearch
 set hlsearch
-"colorscheme solarized
+let g:solarized_termcolors=256
+colorscheme solarized
+au FileType python setl sw=4 sts=4 et
+au FileType go setl sw=4 sts=4
 __EOF__
