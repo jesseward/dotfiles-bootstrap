@@ -4,6 +4,7 @@ notes for a current config. Will likely change this to an ansible task.
 Colours
 =======
 - gnome terminal colours - https://raw.githubusercontent.com/chriskempson/base16-gnome-terminal/master/base16-ocean.dark.sh
+- iterm2 colours - https://raw.githubusercontent.com/chriskempson/base16-iterm2/master/base16-ocean.dark.256.itermcolors
 - Linux Shell - https://github.com/chriskempson/base16-shell (https://raw.githubusercontent.com/chriskempson/base16-shell/master/base16-ocean.dark.sh)
 
 Vim
