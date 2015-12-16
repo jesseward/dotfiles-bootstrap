@@ -181,6 +181,12 @@ URxvt.cutchars:           "`()'*[]{|}"
 ! Disable Keycap Picture Insert and ISO-14755 Mode. Trigger by Ctrl-Shift
 ! https://bitbucket.org/sme/dotfiles/src/0b4387472283/.Xdefaults
 URxvt.iso14755_52:        false
-URxvt.iso14755:           false
+URxvt.iso14755:           false
+! MAP home and end keys 
+URxvt.keysym.Home: \033[1~                                                                           
+URxvt.keysym.End: \033[4~                                                                            
+URxvt.keysym.KP_Home: \033[1~                                                                        
+URxvt.keysym.KP_End:  \033[4~ 
+
 ```
 
