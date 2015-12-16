@@ -6,7 +6,7 @@ Colours
 - gnome terminal colours - https://raw.githubusercontent.com/chriskempson/base16-gnome-terminal/master/base16-ocean.dark.sh
 - iterm2 colours - https://raw.githubusercontent.com/chriskempson/base16-iterm2/master/base16-ocean.dark.256.itermcolors
 - Linux Shell - https://github.com/chriskempson/base16-shell (https://raw.githubusercontent.com/chriskempson/base16-shell/master/base16-ocean.dark.sh)
-
+- .Xresources base16-ocean.dark.256. - https://raw.githubusercontent.com/chriskempson/base16-xresources/master/base16-ocean.dark.256.xresources
 Vim
 ===
 ```
@@ -62,6 +62,32 @@ set-option -g set-titles on
 set-option -g set-titles-string '[#S:#I #H] #W' # use screen title
 ```
 
+xmonad
+=======
+```
+import System.Posix.Env (getEnv)
+import Data.Maybe (maybe)
+
+import XMonad
+import XMonad.Config.Desktop
+import XMonad.Config.Gnome
+import XMonad.Config.Kde
+import XMonad.Config.Xfce
+
+main = do
+     session <- getEnv "DESKTOP_SESSION"
+     let config = maybe desktopConfig desktop session
+     xmonad $ config  {
+      terminal = "urxvt256c" -- set default terminal urxvt. Config specified in ~/.Xdefaults
+     } 
+
+desktop "gnome" = gnomeConfig
+desktop "kde" = kde4Config
+desktop "xfce" = xfceConfig
+desktop "xmonad-gnome" = gnomeConfig
+desktop _ = desktopConfig
+
+```
 git config
 ==========
 ```
@@ -99,3 +125,48 @@ local_settings.py
 # osx
 .DS_Store
 ```
+
+Xresources
+==========
+```
+! URxvt
+
+!URxvt.termName:           rxvt-256color
+*customization:           -color
+URxvt.title:              Terminal
+Urxvt.loginShell:         true
+
+URxvt*visualBell:         false
+URxvt*urgentOnBell:       true
+URxvt*scrollBar:          false
+URxvt*internalBorder:     0
+
+URxvt.depth:              32
+
+! Fonts
+!
+URxvt.font: xft:Anonymous Pro:size=12
+URxvt.colorBD:            #000000
+URxvt.xftAntialias:       true
+URxvt.letterSpace: 1
+
+! urxvt will force a screen refresh on each new line it received
+URxvt*jumpScroll:         false
+URxvt*saveLines:          10000
+
+! Match URLs
+! urlLauncher (ubuntu) url-launcher (archlinux)
+URxvt*perl-ext-common:    default,matcher
+urxvt*url-launcher:       /usr/bin/google-chrome-stable
+URxvt*underlinedURLs:     true
+URxvt*matcher.button:     1
+URxvt*matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+! Dont select special chars
+URxvt.cutchars:           "`()'*[]{|}"
+
+! Disable Keycap Picture Insert and ISO-14755 Mode. Trigger by Ctrl-Shift
+! https://bitbucket.org/sme/dotfiles/src/0b4387472283/.Xdefaults
+URxvt.iso14755_52:        false
+URxvt.iso14755:           false
+```
+
