@@ -7,6 +7,7 @@ Colours
 - iterm2 colours - https://raw.githubusercontent.com/chriskempson/base16-iterm2/master/base16-ocean.dark.256.itermcolors
 - Linux Shell - https://github.com/chriskempson/base16-shell (https://raw.githubusercontent.com/chriskempson/base16-shell/master/base16-ocean.dark.sh)
 - .Xresources base16-ocean.dark.256. - https://raw.githubusercontent.com/chriskempson/base16-xresources/master/base16-ocean.dark.256.xresources
+
 Vim
 ===
 ```
@@ -20,6 +21,7 @@ git clone https://github.com/fatih/vim-go.git
 ```
 
 .vimrc
+======
 ```
 execute pathogen#infect()
 syntax on
@@ -50,16 +52,28 @@ tmux
 set-option -g prefix C-a
 unbind-key C-b
 bind-key a send-prefix
+
 # Options
 set-option -sg escape-time 50 # this makes vim fucking awful to use
 set-option -g base-index 1
 set-option -g default-terminal screen-256color
 set-option -g lock-command vlock
 set-window-option -g xterm-keys on # to make ctrl-arrow, etc. work
+
 # http://stackoverflow.com/questions/4292572/why-does-tmux-erase-terminal-contents-on-editor-exit
 set-window-option -g alternate-screen on
-set-option -g set-titles on
-set-option -g set-titles-string '[#S:#I #H] #W' # use screen title
+
+set -g default-terminal "screen-256color"
+set -g status-bg colour235
+set -g status-fg white
+
+set-window-option -g window-status-current-fg black
+set-window-option -g window-status-current-bg green
+
+set -g pane-border-fg colour235
+set -g pane-border-bg black
+set -g pane-active-border-fg green
+set -g pane-active-border-bg black
 ```
 
 xmonad
@@ -127,7 +141,7 @@ local_settings.py
 ```
 
 Xresources
-==========
+==========
 ```
 ! URxvt
 
