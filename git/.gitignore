@@ -1,0 +1,17 @@
+# python specific
+*.py[cod]
+*.egg
+*.egg-info
+# my virtenv directories
+ve
+# build directories
+build
+pip-log.txt
+local_settings.py
+# c specific
+*.so
+# global
+*~
+*.log
+# osx
+.DS_Store
