@@ -1,5 +1,3 @@
-notes for a current config. Will likely change this to an ansible task. 
-
 
 Colours
 =======
