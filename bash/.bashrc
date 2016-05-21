@@ -31,10 +31,12 @@ dmesg_with_human_timestamps () {
 
 ## bash prompt 
 FULL_HOST=$(hostname -f)
-PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FRED}\w${HC}${FWHT})\n(${RS}${FRED}\@${HC}${FWHT}) >>>${RS} "
+PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FBLE}\w${HC}${FWHT})\n(${RS}${FBLE}\@${HC}${FWHT}) >>>${RS} "
 
 set -o vi
 
+shopt -s autocd
+shopt -s cmdhist histappend
 
 alias tmux='TERM=xterm-256color tmux'
 alias rm='rm -i'
