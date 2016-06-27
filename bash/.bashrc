@@ -21,13 +21,19 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 # make dmesg output readable.
-dmesg_with_human_timestamps () {
+hdmesg () {
     $(type -P dmesg) "$@" | perl -w -e 'use strict;
         my ($uptime) = do { local @ARGV="/proc/uptime";<>}; ($uptime) = ($uptime =~ /^(\d+)\./);
         foreach my $line (<>) {
             printf( ($line=~/^\[\s*(\d+)\.\d+\](.+)/) ? ( "[%s]%s\n", scalar localtime(time - $uptime + $1), $2 ) : $line )
         }'
 }
+
+# enable gvm if present
+if [ -f "${HOME}/.gvm/scripts/gvm" ] ;
+then
+    source ${HOME}/.gvm/scripts/gvm
+fi
 
 ## bash prompt 
 FULL_HOST=$(hostname -f)
