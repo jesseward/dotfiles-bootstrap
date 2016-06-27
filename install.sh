@@ -6,7 +6,7 @@ clean_files () {
     for f in ${FILES}
     do
         echo "INFO : removing file ${f}"
-        rm -f ${HOME}/${f}
+        rm -rf ${HOME}/${f}
     done
 }
 

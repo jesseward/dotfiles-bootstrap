@@ -1,4 +1,9 @@
 dotfiles-bootstrap
 ==================
 
-CentOs and Ubuntu system configuration bootstrapping (vim, tmux, bash, mutt, etc)
+```
+git clone --recursive https://github.com/jesseward/dotfiles-bootstrap.git
+cd dotfiles-bootstrap
+sh install.sh clean
+sh install.sh link
+```
