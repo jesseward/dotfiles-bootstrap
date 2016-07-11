@@ -9,7 +9,16 @@ build
 pip-log.txt
 local_settings.py
 # c specific
+*.a
 *.so
+# golang
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+*.test
+*.prof
 # global
 *~
 *.log
