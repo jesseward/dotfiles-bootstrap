@@ -58,5 +58,5 @@ FULL_HOST=$(hostname -f)
 . ~/bin/git-prompt.sh
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWDIRTYSTATE=1
-PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FBLE}\w${HC}${FWHT})\n(${RS}${FBLE}\@${HC}${FWHT}) ${FRED}\$(__git_ps1) ${FWHT}>>>${RS} "
+PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FBLE}\w${HC}${FWHT})${FRED}\$(__git_ps1)\n${FWHT}(${RS}${FBLE}\@${HC}${FWHT}) ${FWHT}>>>${RS} "
 export PS1

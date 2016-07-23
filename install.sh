@@ -2,7 +2,7 @@
 
 # clean_files removes any existing files that may have been laid down by the base os. This is to be run once.
 clean_files () {
-    FILES=".vimrc .tmux.conf .vim .bashrc .bash_profile ~/bin/base16-ocean.dark.sh .gitignore .gitconfig"
+    FILES=".vimrc .tmux.conf .vim .bashrc .bash_profile ~/bin/base16-ocean.dark.sh ~/bin/git-prompt.sh .gitignore .gitconfig"
     for f in ${FILES}
     do
         echo "INFO : removing file ${f}"
