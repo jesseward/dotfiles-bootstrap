@@ -35,9 +35,6 @@ then
     source ${HOME}/.gvm/scripts/gvm
 fi
 
-## bash prompt 
-FULL_HOST=$(hostname -f)
-PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FBLE}\w${HC}${FWHT})\n(${RS}${FBLE}\@${HC}${FWHT}) >>>${RS} "
 
 set -o vi
 
@@ -52,7 +49,14 @@ alias ln='ln -i'
 
 export HISTTIMEFORMAT="%F %T "
 export HISTFILESIZE=10000
-export PS1
 
 # load base16 colour schema
 . ~/bin/base16-ocean.dark.sh
+
+## bash prompt with dynamic git-prompt.sh
+FULL_HOST=$(hostname -f)
+. ~/bin/git-prompt.sh
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWDIRTYSTATE=1
+PS1="${RS}\u${FWHT}@${RS}${FULL_HOST} ${HC}${FWHT}(${RS}${FBLE}\w${HC}${FWHT})\n(${RS}${FBLE}\@${HC}${FWHT}) ${FRED}\$(__git_ps1) ${FWHT}>>>${RS} "
+export PS1
