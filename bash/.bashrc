@@ -46,6 +46,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ln='ln -i'
+alias gp='git pull --rebase'
 
 export HISTTIMEFORMAT="%F %T "
 export HISTFILESIZE=10000
