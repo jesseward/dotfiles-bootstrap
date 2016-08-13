@@ -15,11 +15,15 @@ run_stow () {
     find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'|grep -v "\.git" |xargs -n 1 stow -vv
 }
 
+stow_check () {
+    command -v stow >/dev/null 2>&1 || { echo "GNU Stow is not installed. Aborting." >&2; exit 1; }
+}
 case "$1" in
     clean)
         clean_files
         ;;
     link)
+        stow_check
         run_stow
         ;;
     *)
