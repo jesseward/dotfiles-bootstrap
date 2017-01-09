@@ -29,6 +29,11 @@ hdmesg () {
         }'
 }
 
+# create back-up of file
+old() { 
+    cp "$1"{,.old}; 
+}
+
 # enable gvm if present
 if [ -f "${HOME}/.gvm/scripts/gvm" ] ;
 then
