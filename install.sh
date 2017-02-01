@@ -12,7 +12,7 @@ clean_files () {
 
 # run_stow executes gnu stow aginst all directories in cwd
 run_stow () {
-    find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'|grep -v "\.git" |xargs -n 1 stow -vv
+    ls -d *"/" |tr -d '/' |xargs -n 1 stow -vv
 }
 
 stow_check () {
