@@ -1,0 +1,10 @@
+---
+- name: "set prod serving permissions {{ target }}"
+  file:
+    group: "{{ www_user }}"
+    owner: "{{ www_group }}"
+    recurse: true
+    path: "{{ prod_path }}/{{ target }}"
+    state: directory
+  become_method: sudo
+  become: true

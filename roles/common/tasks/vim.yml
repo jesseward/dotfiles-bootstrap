@@ -1,0 +1,43 @@
+---
+- name: nano remove
+  apt: name=nano state=absent
+  become: true
+  become_method: sudo
+
+- name: vim install
+  apt: name=vim state=present
+  become: true
+  become_method: sudo
+
+- name: create vim directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "/home/{{ user }}/.vim"
+    - "/home/{{ user }}/.vim/autoload"
+    - "/home/{{ user }}/.vim/bundle"
+
+- name: copy vim required cfg
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+  with_items:
+    - { src: ".vimrc", dst: "/home/{{ user }}/.vimrc" }
+    - { src: "pathogen.vim", dst: "/home/{{ user }}/.vim/autoload/pathogen.vim" }
+
+- name: install vim plugins.
+  git:
+    repo: "{{ item.repo }}"
+    dest: "/home/{{ user }}/.vim/bundle/{{ item.dst }}"
+    version: master
+  become: true
+  become_method: sudo
+  with_items:
+    - { repo: "https://github.com/chriskempson/base16-vim.git", dst: "base16-vim" }
+    - { repo: "https://github.com/majutsushi/tagbar.git", dst: "tagbar" }
+    - { repo: "https://github.com/vim-airline/vim-airline.git", dst: "vim-airline" }
+    - { repo: "https://github.com/airblade/vim-gitgutter.git", dst: "vim-gitgutter" }
+    - { repo: "https://github.com/jwhitley/vim-matchit.git", dst: "vim-matchit" }
+    - { repo: "https://github.com/Vimjas/vim-python-pep8-indent.git", dst: "vim-python-pep8-indent" }
+    - { repo: "https://github.com/fatih/vim-go.git", dst: "vim-go" }

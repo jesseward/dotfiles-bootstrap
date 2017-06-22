@@ -1,0 +1,10 @@
+---
+- hosts: web
+  remote_user: jesse
+  roles:
+      #    - common
+    - certbot
+    - nginx
+    - redis
+    - jesseward_com
+    - assist_frequencies_audio

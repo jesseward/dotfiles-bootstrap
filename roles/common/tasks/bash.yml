@@ -1,0 +1,14 @@
+---
+- name: create /home/bin directory
+  file:
+    state: directory
+    path: "/home/{{ user }}/bin"
+
+- name: copy bash dot files in place.
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+  with_items:
+    - { src: ".bash_profile", dst: "/home/{{ user }}/.bash_profile" }
+    - { src: "git-prompt.sh", dst: "/home/{{ user }}/bin/git-prompt.sh" }
+    - { src: "base16-ocean.dark.sh", dst: "/home/{{ user }}/bin/base16-ocean.dark.sh" }

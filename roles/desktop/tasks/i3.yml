@@ -1,0 +1,15 @@
+---
+- name: install i3
+  become: true
+  become_method: sudo
+  apt:
+    name: i3
+    state: present
+
+- name: install i3 config files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+  with_items:
+      - { src: "i3_config", dst: "/home/jesse/.i3/config" }
+      - { src: "i3_status", dst: "/home/jesse/.i3status.conf" }

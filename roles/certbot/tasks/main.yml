@@ -1,0 +1,13 @@
+---
+- name: Add certbot repo
+  apt_repository:
+    repo: "ppa:certbot/certbot"
+    state: present
+    update_cache: yes
+  become: true
+  become_method: sudo
+
+- name: add certbot
+  apt: name=certbot state=present
+  become: true
+  become_method: sudo

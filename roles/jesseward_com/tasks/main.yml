@@ -1,0 +1,30 @@
+---
+- name: install nginx jesseward.com.conf
+  become: true
+  become_method: sudo
+  copy:
+    src: nginx_jesseward.com.conf
+    dest: /etc/nginx/sites-available/jesseward.com.conf
+    group: root
+    owner: root
+
+- name: clone jesseward.com git repo
+  git:
+    repo: https://github.com/jesseward/www.jesseward.com.git
+    dest: "{{ prod_path }}/jesseward.com"
+    version: master
+  become: true
+  become_method: sudo
+  notify: set prod serving permissions jesseward.com
+
+- name: enable nginx site-available jesseward.com symlink
+  become: true
+  become_method: sudo
+  file:
+    src: /etc/nginx/sites-available/jesseward.com.conf
+    dest: /etc/nginx/sites-enabled/jesseward.com.conf
+    state: link
+    group: root
+    owner: root
+  notify: restart nginx
+

@@ -1,0 +1,13 @@
+---
+- name: install git
+  apt: name=git state=present
+  become: true
+  become_method: sudo
+
+- name: copy git dot files.
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ user }}/{{ item }}"
+  with_items:
+    - .gitconfig
+    - .gitignore

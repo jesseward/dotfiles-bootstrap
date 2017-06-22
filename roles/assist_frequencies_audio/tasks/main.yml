@@ -1,0 +1,29 @@
+---
+- name: install nginx assist.frequencies.audio.conf
+  become: true
+  become_method: sudo
+  copy:
+    src: nginx_assist.frequencies.audio.conf
+    dest: /etc/nginx/sites-available/assist.frequencies.audio.conf
+    group: root
+    owner: root
+
+- name: clone assist.frequencies.audio git repo
+  git:
+    repo: https://github.com/jesseward/musicdiscovery-assist.git
+    dest: "{{ prod_path }}/assist.frequencies.audio"
+    version: master
+  become: true
+  become_method: sudo
+  notify: set prod serving permissions assist.frequencies.audio
+
+- name: enable nginx site-available assist.frequencies.audio symlink
+  become: true
+  become_method: sudo
+  file:
+    src: /etc/nginx/sites-available/assist.frequencies.audio.conf
+    dest: /etc/nginx/sites-enabled/assist.frequencies.audio.conf
+    state: link
+    group: root
+    owner: root
+  notify: restart nginx
