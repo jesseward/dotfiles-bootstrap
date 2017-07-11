@@ -34,6 +34,33 @@ old() {
     cp "$1"{,.old}; 
 }
 
+# create python3 virtual environment
+v3() {
+
+    VBASE="${HOME}/.ve"
+    V_PATH="${VBASE}/${1}"
+
+    if [ ! -d "${VBASE}" ] ;
+    then
+        mkdir "${VBASE}"
+    fi
+
+    if [ -d "${V_PATH}" ] ;
+    then
+        echo "VirtualENV already exists, aborting."
+        return 1
+    fi
+    python3 -m venv ${V_PATH}
+    source ${V_PATH}/bin/activate
+    pip install --upgrade pip
+    pip install ipython
+}
+
+# activate a virtual environment
+a3() {
+    . ~/.ve/${1}/bin/activate
+}
+
 # enable gvm if present
 if [ -f "${HOME}/.gvm/scripts/gvm" ] ;
 then
