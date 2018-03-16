@@ -19,3 +19,4 @@ let base16colorspace=256
 colorscheme base16-ocean
 let g:rehash256 = 1
 set backspace=indent,eol,start
+command R .w !bash
