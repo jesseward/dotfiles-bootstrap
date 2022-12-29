@@ -1,6 +1,0 @@
----
-www_user: www-data
-www_group: www-data
-web_base_path: /opt/web
-prod_path: "{{ web_base_path }}/prod"
-dev_path: "{{ web_base_path }}/dev"

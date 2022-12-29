@@ -1,5 +1,0 @@
----
-- hosts: shell
-  remote_user: jesse
-  roles:
-    - common

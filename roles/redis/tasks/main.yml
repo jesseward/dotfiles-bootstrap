@@ -1,5 +1,0 @@
----
-- name: redis-server install
-  apt: name=redis-server state=present
-  become: true
-  become_method: sudo

@@ -1,7 +1,0 @@
----
-- name: restart nginx
-  become: true
-  become_method: sudo
-  service: name=nginx state=restarted
-
-- include: set_permissions.yml
