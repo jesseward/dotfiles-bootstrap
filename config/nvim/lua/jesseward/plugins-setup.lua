@@ -45,7 +45,6 @@ return require('packer').startup(function(use)
     })
     use 'neovim/nvim-lspconfig'
     use 'nvim-treesitter/nvim-treesitter'
-    use('nvim-lua/plenary.nvim')
 
     use('crispgm/nvim-go')
     use('rcarriga/nvim-notify')
