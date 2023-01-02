@@ -1,3 +1,4 @@
 *.retry
 hosts/hosts
 *.swp
+config/nvim/plugin/packer_compiled.lua
