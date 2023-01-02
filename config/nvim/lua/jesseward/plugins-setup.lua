@@ -43,10 +43,12 @@ return require('packer').startup(function(use)
             { "rafamadriz/friendly-snippets" },
         },
     })
-    use 'ray-x/go.nvim'
-    use 'ray-x/guihua.lua' -- recommanded if need floating window support
     use 'neovim/nvim-lspconfig'
     use 'nvim-treesitter/nvim-treesitter'
+    use('nvim-lua/plenary.nvim')
+
+    use('crispgm/nvim-go')
+    use('rcarriga/nvim-notify')
     if packer_bootstrap then
         require('packer').sync()
     end
