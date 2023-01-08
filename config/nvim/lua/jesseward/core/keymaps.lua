@@ -25,3 +25,10 @@ keymap.set('n', '<leader>fb', builtin.buffers, {})
 keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 keymap.set('n', '<leader>fl', ":lua vim.lsp.buf.format { async = true }<CR>") -- format lua file
+
+-- debugger / dap shortcutss.
+keymap.set('n', '<leader>db', ":lua require'dap'.toggle_breakpoint()<CR>") -- set a breakpoint
+keymap.set('n', '<leader>du', ":lua require'dapui'.toggle()<CR>") -- toggle the dap-ui
+keymap.set('n', '<leader>dt', ":lua require'dap-go'.debug_test()<CR>") -- debug current test
+keymap.set('n', '<leader>dlt', ":lua require'dap-go'.debug_last_test()<CR>") -- debug last/rerun test
+keymap.set('n', '<leader>dc', ":lua require'dap'.continue()<CR>") -- debug last/rerun test

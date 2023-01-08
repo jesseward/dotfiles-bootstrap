@@ -7,4 +7,5 @@ require("jesseward.plugins.comment")
 require("jesseward.plugins.lualine")
 require("jesseward.plugins.lsp")
 require("jesseward.plugins.go")
+require("jesseward.plugins.nvim-dap-go")
 -- :lua vim.lsp.buf.formatting() <-- autoformat lua syntax

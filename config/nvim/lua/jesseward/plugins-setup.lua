@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
 
     use 'bluz71/vim-nightfly-guicolors' -- preferred colorscheme
     use 'numToStr/Comment.nvim' -- comment helper
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use 'leoluz/nvim-dap-go'
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
